@@ -9,12 +9,14 @@ app.set('title', 'HDC');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
+    console.log("(GET) Compiling ", req.query.program);
     runHDC(req.query.program, function(param) {
 	res.end(param);
     });
 });
 
 app.post('/', function (req, res) {
+    console.log("(POST) Compiling ", req.body.program);
     runHDC(req.body.program, function(param) {
 	res.end(param);
     });
