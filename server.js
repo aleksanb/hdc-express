@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', function (req, res) {
     console.log("(GET) Compiling ", req.query.program);
+    req.query.program || res.end("; No program provided.\n; Remember to set GET parameter 'program'.")
+
     runHDC(req.query.program, function(param) {
 	res.end(param);
     });
@@ -17,6 +19,8 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
     console.log("(POST) Compiling ", req.body.program);
+    req.body.program || res.end("; No program provided.\n; Remember to set POST parameter 'program'.")
+
     runHDC(req.body.program, function(param) {
 	res.end(param);
     });
