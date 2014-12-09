@@ -2,3 +2,13 @@ hdc-express
 ===========
 
 Haskell Demolicious Compiler SAAS on node express
+
+Example usage:
+
+POST
+====
+curl --data-urlencode "program= a=20 in [2,3,4]" http://hdc.burkow.no
+
+GET
+===
+http://hdc.burkow.no/?program=PROGRAM_GOES_HERE
