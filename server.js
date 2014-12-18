@@ -27,7 +27,7 @@ app.post('/', function (req, res) {
 });
 
 function runHDC(program, callback) {
-    var child = spawn('/home/aleksanb/Projects/hdc', ''),
+    var child = spawn('./hdc', ''),
         buffer = '';
 
     child.stdout.on('data', function (data) {
