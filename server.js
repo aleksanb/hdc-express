@@ -13,7 +13,12 @@ app.get('/', function (req, res) {
     req.query.program || res.end("; No program provided.\n; Remember to set GET parameter 'program'.")
 
     runHDC(req.query.program, function(param) {
-	res.end(param);
+      if (req.query.callback != undefined) {
+        result = JSON.stringify(param.split("\n").filter(function(e) {return e; }));
+        param = req.query.callback + "(" + result + ")";
+      }
+
+      res.end(param);
     });
 });
 
